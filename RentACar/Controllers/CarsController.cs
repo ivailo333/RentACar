@@ -24,9 +24,15 @@ namespace RentACar.Controllers
         // GET: Cars
         [Route("Cars")]
         [Authorize]
-        public async Task<IActionResult> Index()
+         public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Cars.ToListAsync());
+            var cars = from c in _context.Cars
+                          select c;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                cars = cars.Where(s => s.Marka!.Contains(searchString));
+            }
+            return View(await cars.ToListAsync());
         }
 
         // GET: Cars/Details/5

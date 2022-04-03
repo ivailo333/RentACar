@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RentACar.Data;
@@ -21,7 +22,9 @@ namespace RentACar.Controllers
         }
 
         // GET: Employees
+       
         [Route("Employees")]
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Employees.ToListAsync());

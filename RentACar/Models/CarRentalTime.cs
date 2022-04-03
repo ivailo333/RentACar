@@ -7,10 +7,17 @@ namespace RentACar.Models
     {
         [Key]
         public int Id { get; set; }
-        public int ClientId { get; set; }
-        public int EmployeeId { get; set; }
-        public DateTime DateTime1 { get; set; }
-        public int Duration { get; set; }
 
+        [Required]
+        public int ClientId { get; set; }
+
+        [Required]
+        public int EmployeeId { get; set; }
+
+        [Required]
+        public DateTime DateTime1 { get; set; }
+
+        [Required]
+        public int Duration { get; set; }
     }
 }

@@ -31,23 +31,29 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.EmployeeId">Редактиране</a>
-                <a asp-action="Details" asp-route-id="@item.EmployeeId">Детайли</a>
-                <a asp-action="Delete" asp-route-id="@item.EmployeeId">Изтриване</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EmployeeId">Редактиране</a>
+                    <a asp-action="Details" asp-route-id="@item.EmployeeId">Детайли</a>
+                    <a asp-action="Delete" asp-route-id="@item.EmployeeId">Изтриване</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<div>
+    <p>
+        Брой работещи служители: @Model.Count(i=>i.EmployeeId!=0)
+    </p>
+</div>
